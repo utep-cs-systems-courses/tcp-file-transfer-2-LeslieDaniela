@@ -8,6 +8,7 @@ from framedSock import framedSend, framedReceive
 
 PATH = "Send/"
 
+# Establishes a Connection from Client to Server
 def fileClient():
     switchesVarDefaults = (
         (('1', '--server'), 'server', "127.0.0.1:50001"),
@@ -15,7 +16,7 @@ def fileClient():
         (('d', '--debug'), 'debug', False),
     )
 
-    # based on demos
+    # Sets Parameters
     parameterMap = params.parseParams(switchesVarDefaults)
     server, usage, debug = parameterMap['server'], parameterMap['usage'], parameterMap['debug']
 
@@ -31,10 +32,11 @@ def fileClient():
 
     port = (serverHost, serverPort)
 
-    # create socket
+    # Create Socket
     listenSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     listenSocket.connect(port)
 
+    # Handles User Input
     while 1:
         fileName = input("Enter a filename > ")
         fileName.strip()

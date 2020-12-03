@@ -78,6 +78,10 @@ def writeFile(connection, address, fileName, contents):
         raise TypeError
 
     try:
+        
+        # Check list of files [mutex]
+        # Not in list => add        
+
         # create file to write 
         writer = open(fileName, 'w+b') # write and binary
         writer.write(contents)

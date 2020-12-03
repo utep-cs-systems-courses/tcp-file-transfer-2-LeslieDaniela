@@ -9,6 +9,7 @@ from framedSock import framedReceive
 PATH = "./Receive"
 HOST = "127.0.0.1"
 
+# Establishes Listening Connection
 def fileServer():
     switchesVarDefaults = (
         (('1', '--listenPort'), 'listenPort', 50001),
@@ -16,6 +17,7 @@ def fileServer():
         (('d', '--debug'), 'debug', False),
     )
 
+    # Sets Parameters based on demos
     parameterMap = params.parseParams(switchesVarDefaults)
     listenPort, debug = parameterMap['listenPort'], parameterMap['debug']
 
@@ -24,11 +26,12 @@ def fileServer():
 
     bindAddress = (HOST, listenPort)
 
-    # creating listening socket
+    # Creates Listening Socket
     listenSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     listenSocket.bind(bindAddress)
 
-    listenSocket.listen(10) # 10 connections
+    # Can have up to 10 connections
+    listenSocket.listen(10) 
     print("Listening on: ", bindAddress)
 
     # check if dir exists to receive files, if not, create it anyway, then move to it
